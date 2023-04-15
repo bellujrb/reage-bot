@@ -25,8 +25,27 @@ for (const file of commandsFiles){
     }
 }
 
+// Login BOT
 client.once(Events.ClientReady, c => {
 	console.log(`UFA! Estou logado. ${c.user.tag}`);
 });
-
 client.login(TOKEN);
+
+// Listener Interer
+
+client.on(Events.InteractionCreat, async interaction =>{
+    if (!interaction.isChatInputCommand()) return
+    const command = interaction.client.commands.get(interaction.commandName)
+    if (!command){
+        console.error("ERROR: Consulte um Desenvolvedor")
+        return 
+    }
+
+    try {
+        await command.execute(interaction)
+    } 
+    catch (err){
+        console.error(err)
+        await interaction.reply("ERROR: Consulte o Desenvolvedor")
+    }
+})

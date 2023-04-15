@@ -1,7 +1,7 @@
-const { SlashCommandsBuilder } = require('discord.js')
+const { SlashCommandBuilder } = require('discord.js')
 
 module.exports = { 
-    data: new SlashCommandsBuilder()
+    data: new SlashCommandBuilder()
         .setName("escolta")
         .setDescription('Horario da Escolta!'),
 
